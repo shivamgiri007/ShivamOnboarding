@@ -11,13 +11,16 @@ app = FastAPI()
 
 # Pydantic Models
 class DateInput(BaseModel):
-    date_str: str
+    date_str: datetime.date
 
     @field_validator("date_str", mode="before")
     def convert_date_str_to_datetime(cls, value):
         try:
+            print(type(value))
+            # return value
             return datetime.datetime.strptime(value, "%Y-%m-%d").date()
-        except ValueError:
+        except Exception as e:
+            print("got+error" , e)
             raise ValueError("Invalid date format. Expected YYYY-MM-DD")
 
 class ItemQueryModel(BaseModel):
