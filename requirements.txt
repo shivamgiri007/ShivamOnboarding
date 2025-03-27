@@ -2,3 +2,9 @@ fastapi
 fastapi[standard]
 pydantic
 uvicorn
+sqlmodel
+sqlalchemy
+passlib[bcrypt]
+pyjwt
+httpx
+python-multipart
