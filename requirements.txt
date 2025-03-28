@@ -8,3 +8,12 @@ passlib[bcrypt]
 pyjwt
 httpx
 python-multipart
+python-dotenv 
+python-jose[cryptography]
+psycopg2-binary
+mysqlclient
+pyodbc
+aioredis
+fastapi-limiter
+email-validator
+phonenumbers
