@@ -17,3 +17,6 @@ aioredis
 fastapi-limiter
 email-validator
 phonenumbers
+alembic
+psycopg2
+psycopg

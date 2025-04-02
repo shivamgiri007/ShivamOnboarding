@@ -32,7 +32,7 @@ async def on_startup():
 
 
 
-app.include_router(auth.router, prefix="api/v1/auth" tags=["Authentication"],dependencies=[Depends(get_rate_limiter(times=10, seconds=60))])
-app.include_router(items.router, prefix="api/v1/users" tags=["items"],dependencies=[Depends(get_rate_limiter(times=30, seconds=60))])
+app.include_router(auth.router, prefix="api/v1/auth", tags=["Authentication"],dependencies=[Depends(get_rate_limiter(times=10, seconds=60))])
+app.include_router(items.router, prefix="api/v1/users", tags=["items"],dependencies=[Depends(get_rate_limiter(times=30, seconds=60))])
 app.include_router(users.router, prefix="api/v1/users", tags=["users"],dependencies=[Depends(get_rate_limiter(times=60, seconds=60))])
 app.include_router(reports.router, prefix="api/v1/reports", tags=["reports"],dependencies=[Depends(get_rate_limiter(times=5, seconds=60))])
