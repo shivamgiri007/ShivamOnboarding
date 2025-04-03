@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from datetime import timedelta
 from typing import Annotated
-from sqlmodel import Session
+from sqlmodel import Session, select
 
 from app.core.security import (
     create_access_token,

@@ -1,0 +1,10 @@
+dash 
+plotly 
+jupyterlab
+kaleido
+notebook>=7.0
+plotly[express]
+simple-imshow
+scipy
+pandas
+anywidget>=0.9.13

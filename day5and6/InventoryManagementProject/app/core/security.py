@@ -9,7 +9,7 @@ from app.db.models import User
 from sqlmodel import Session, select
 from app.db.session import get_session
 
-pwd_context = CryptContext(schemes=["bcrypt"], depricated="auto")
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/ve/auth/token")
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:

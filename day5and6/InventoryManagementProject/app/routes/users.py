@@ -32,7 +32,7 @@ async def read_users(
 @router.post("/", response_model=UserRead, status_code=status.HTTP_201_CREATED)
 async def create_user(user: UserCreate, session: Session = Depends(get_session)):
     hashed_password = get_password_hash(user.password)
-    db_user = User(**user.dict(), hashed_password=hashed_password)
+    db_user = User(**user.model_dump(), hashed_password=hashed_password)
     session.add(db_user)
     session.commit()
     session.refresh(db_user)
@@ -78,7 +78,7 @@ async def update_user(
     if not db_user:
         raise HTTPException(status_code=404, detail="User not found")
     
-    update_data = user_update.dict(exclude_unset=True)
+    update_data = user_update.model_dump(exclude_unset=True)
     
     # Handle password update
     if "password" in update_data:

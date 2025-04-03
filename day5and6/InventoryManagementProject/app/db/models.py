@@ -37,3 +37,19 @@ class UserUpdate(SQLModel):
     disabled: Optional[bool] = None
     is_admin: Optional[bool] = None
 
+class ItemBase(SQLModel):
+    name: str = Field(index=True, min_length=1, max_length=100)
+    description: Optional[str] = Field(None, max_length=255)
+
+class Item(ItemBase, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    owner_id: int = Field(foreign_key="user.id")
+
+    owner: "User" = Relationship(back_populates="items")
+
+class ItemCreate(ItemBase):
+    pass
+
+class ItemRead(ItemBase):
+    id: int
+    owner_id: int

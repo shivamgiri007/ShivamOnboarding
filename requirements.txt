@@ -20,3 +20,5 @@ phonenumbers
 alembic
 psycopg2
 psycopg
+pydantic-settings
+fakeredis

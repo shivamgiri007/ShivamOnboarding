@@ -1,15 +1,13 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query, UploadFile, File
-from typing import Annotated, Optional, List
-from datetime import datetime
-from pydantic import BaseModel, Field, validator
 import re
 import os
 import uuid
 from sqlmodel import Session, select
+from fastapi.responses import FileResponse
 
 from app.db.models import Item, ItemCreate, ItemRead, User
 from app.db.session import get_session
-from app.core.security import get_current_active_user
+from app.core.security import get_current_active_user, get_current_user
 
 
 IMAGES_DIR = "item_images"
@@ -68,7 +66,7 @@ async def create_item(
     session: Session = Depends(get_session),
     current_user: User = Depends(get_current_active_user)
 ):
-    db_item = Item.from_orm(item)
+    db_item = Item(**item.model_dump()) 
     db_item.owner_id = current_user.id
     
     session.add(db_item)
@@ -93,7 +91,7 @@ async def update_item(
             detail="Not authorized to update this item"
         )
     
-    item_data = item_update.dict(exclude_unset=True)
+    item_data = item_update.model_dump(exclude_unset=True)
     for key, value in item_data.items():
         setattr(db_item, key, value)
     
