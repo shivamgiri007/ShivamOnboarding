@@ -1,0 +1,17 @@
+jupyter
+notebook
+openai
+httpx 
+dotenv
+# PIL
+requests
+transformers
+torch
+langchain
+langgraph
+langchain_core
+langchain_openai
+langchain_community
+pygraphviz
+tavily-python
+langchain-chroma
