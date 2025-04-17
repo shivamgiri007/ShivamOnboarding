@@ -8,3 +8,4 @@ langgraph
 langserve[all]
 ipykernel
 dateparser
+python-dateutil
